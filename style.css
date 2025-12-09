@@ -1,0 +1,330 @@
+/* --- FUENTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+
+/* --- VARIABLES ROOT --- */
+:root {
+    --color-principal: #C5A059; 
+    --color-secundario: #F4F4F4;
+    --color-texto: #333333;
+    --font-titulos: 'Playfair Display', serif;
+    --font-nombres: 'Great Vibes', cursive;
+    --font-cuerpo: 'Raleway', sans-serif;
+}
+
+/* --- BASES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: var(--font-cuerpo);
+    color: var(--color-texto);
+    background-color: var(--color-secundario);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 { 
+    font-family: var(--font-titulos); 
+    color: var(--color-principal); }
+h1 { font-family: var(--font-nombres); font-size: 4.5rem; margin: 10px 0; line-height: 1.1; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+h2 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; text-align: center; }
+.hidden { display: none !important; }
+section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+
+/* --- COMPONENTES --- */
+.icono-grande { font-size: 3rem; color: var(--color-principal); margin-bottom: 15px; display: block; }
+.btn {
+    display: inline-block; padding: 12px 30px; background: var(--color-principal); color: white;
+    text-decoration: none; border-radius: 50px; border: none; font-size: 1rem; cursor: pointer;
+    margin-top: 15px; transition: background 0.3s;
+}
+.btn:hover { background-color: #333; }
+.btn-whatsapp { background: #25D366; }
+
+/* --- HERO --- */
+.hero {
+    height: 100vh; background-position: center; background-size: cover;
+    display: flex; justify-content: center; align-items: center; text-align: center;
+    position: relative; color: white;
+}
+.overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); }
+.hero-content { position: relative; z-index: 2; }
+.flecha-bajar { position: absolute; bottom: 30px; z-index: 2; color: white; font-size: 2rem; animation: bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+/* --- CONTADOR --- */
+.contador-section { background: var(--color-principal); color: white; }
+.contador-section h2 { color: white; }
+.timer-container { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
+.time-box { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; min-width: 80px; }
+.time-box span { font-size: 2rem; font-weight: 700; display: block; }
+
+/* --- EFECTO MÁQUINA DE ESCRIBIR (CURSOR) --- */
+.cursor-maquina::after {
+    content: '|'; animation: parpadeo 1s infinite; color: var(--color-principal); font-weight: bold;
+}
+@keyframes parpadeo { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* --- HOSPEDAJE --- */
+.hospedaje-section .subtitulo-seccion { margin-bottom: 30px; font-style: italic; }
+.hoteles-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+.hotel-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 300px; transition: transform 0.3s; }
+.hotel-card:hover { transform: translateY(-5px); }
+.hotel-card img { width: 100%; height: 180px; object-fit: cover; }
+.hotel-info { padding: 20px; text-align: center; }
+
+/* --- ITINERARIO --- */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+.timeline::after { content:''; position: absolute; width:2px; background: var(--color-principal); top:0; bottom:0; left:50%; margin-left: -1px; }
+.evento-item { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; }
+.left { left: 0; text-align: right; }
+.right { left: 50%; text-align: left; }
+.evento-item::after { content: ''; position: absolute; width: 15px; height: 15px; background: white; border: 3px solid var(--color-principal); border-radius: 50%; top: 15px; z-index: 1; }
+.left::after { right: -9px; } .right::after { left: -9px; }
+
+.frase-final-itinerario {
+    text-align: center; font-family: var(--font-nombres); font-size: 2.5rem;
+    color: var(--color-principal); margin-top: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* --- UBICACIÓN --- */
+.lugar-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+.lugar-card { flex: 1; min-width: 300px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.mapa-box iframe { width: 100%; height: 250px; border: 0; margin-top: 15px; }
+
+/* --- GALERÍA --- */
+/* --- GALERÍA ESTILO TARJETA --- */
+
+.galeria-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 400px; /* Ancho ideal de tarjeta */
+    margin: 0 auto; /* Centrado */
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.galeria-card:hover {
+    transform: translateY(-5px); /* Se levanta un poco al pasar mouse */
+}
+
+.card-image img {
+    width: 100%;
+    height: 300px; /* Altura fija para la portada */
+    object-fit: cover; /* Recorta la foto para llenar el espacio sin deformar */
+    display: block;
+}
+
+.card-content {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.card-content p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* El Grid (Se mantiene igual que antes) */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.galeria-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+/* --- INSTAGRAM / HASHTAG --- */
+.hashtag-box {
+    background-color: var(--color-secundario); padding: 20px 40px;
+    border: 2px dashed var(--color-principal); border-radius: 10px; display: inline-block; margin: 25px 0;
+}
+.hashtag-box span { font-family: var(--font-titulos); font-size: 2rem; font-weight: bold; color: var(--color-principal); }
+
+/* --- ÁLBUM DE FOTOS --- */
+.camara-box {
+    background: white; padding: 40px; border-radius: 20px; border: 1px solid #eee;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); position: relative; overflow: hidden;
+}
+.camara-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: linear-gradient(90deg, var(--color-principal), #f39c12, var(--color-principal)); }
+.icono-camara { font-size: 3.5rem; color: #333; margin-bottom: 20px; animation: flash 3s infinite; }
+@keyframes flash { 0%, 90%, 100% { opacity: 1; transform: scale(1); } 92% { opacity: 0.5; transform: scale(1.1); } 94% { opacity: 1; transform: scale(1); } }
+.btn-album { background-color: #333; color: white; font-size: 1.1rem; padding: 15px 35px; }
+.nota-privacidad { font-size: 0.8rem; color: #999; margin-top: 15px; }
+
+/* --- RSVP --- */
+.rsvp-card { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.num-grande { font-size: 1.5rem; color: var(--color-principal); }
+form { max-width: 500px; margin: 20px auto; text-align: left; }
+select, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
+button { width: 100%; }
+
+/* --- MARIPOSAS (CORREGIDO: FONDO Y OPACO) --- */
+.mariposas-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -1; /* DETRÁS DE TODO */ overflow: hidden;
+}
+.mariposa {
+    position: absolute; font-size: 25px; content: '❤️'; opacity: 0.3; /* SUTIL */
+    animation: volar 15s linear infinite; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+.mariposa::before { content: '🦋'; }
+@keyframes volar {
+    0% { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.3; } 90% { opacity: 0.3; }
+    100% { transform: translateY(-30vh) translateX(50px) rotate(45deg); opacity: 0; }
+}
+
+/* --- MÚSICA --- */
+.music-wrapper { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; align-items: center; }
+.music-hint { background: white; padding: 8px 15px; border-radius: 10px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); white-space: nowrap; animation: flotarTexto 2s infinite ease-in-out; }
+.music-hint::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: white transparent transparent transparent; }
+@keyframes flotarTexto { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.music-btn { width: 50px; height: 50px; background: white; border-radius: 50%; box-shadow: 0 0 15px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; color: var(--color-principal); cursor: pointer; font-size: 1.2rem; transition: transform 0.3s; }
+.music-btn:hover { transform: scale(1.1); }
+.music-rotating { animation: girarDisco 3s linear infinite; }
+@keyframes girarDisco { 100% { transform: rotate(360deg); } }
+
+/* --- RESPONSIVE MOBILE --- */
+@media screen and (max-width: 768px) {
+    h1 { font-size: 3rem; line-height: 1.2; padding: 0 10px; }
+    h2 { font-size: 2rem; }
+    section { padding: 40px 15px; }
+    .hero { background-attachment: scroll; }
+    .timeline::after { left: 30px; }
+    .evento-item { width: 100%; padding-left: 70px; padding-right: 10px; text-align: left; }
+    .evento-item::after { left: 21px; }
+    .left, .right { left: 0; }
+    .hashtag-box span { font-size: 1.5rem; word-break: break-all; }
+}
+
+/* --- SPOTIFY SECTION --- */
+.spotify-section .spotify-container {
+    padding-bottom: 40px;
+
+}
+.spotify-container {
+    max-width: 600px; /* Que sea demasiado ancho */
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden; /* Para redondear los bordes del iframe */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display:block;
+}
+
+/* =========================================
+   ESTILOS DEL LIGHTBOX (Pantalla Completa)
+   ========================================= */
+
+/* El fondo oscuro que cubre toda la pantalla */
+.lightbox {
+    position: fixed; /* Se queda fijo aunque hagas scroll */
+    z-index: 2000;   /* Por encima de TODO (incluso del botón de música) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Negro al 90% de opacidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Efecto de aparición suave */
+    opacity: 0;
+    pointer-events: none; /* Para que no estorbe cuando está oculto */
+    transition: opacity 0.3s ease;
+}
+
+/* Cuando le quitamos la clase 'hidden', se vuelve visible */
+.lightbox:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* La imagen en grande */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh; /* Que no sea más alta que la pantalla */
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    border: 3px solid white;
+    animation: zoomIn 0.3s; /* Pequeño zoom al abrir */
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* El botón de cerrar (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-principal);
+    text-decoration: none;
+}
+
+/* Ajuste para celulares */
+@media screen and (max-width: 768px) {
+    .lightbox-content {
+        width: 95%; /* Más ancha en celular */
+        border: none; /* Quitamos borde para ganar espacio */
+    }
+    .close-btn {
+        top: 10px;
+        right: 20px;
+        font-size: 35px;
+    }
+}
+
+/* --- CONTROLES DE NAVEGACIÓN (Flechas) --- */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 30px;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 2002; /* Encima de la imagen */
+    background: rgba(0,0,0,0.3); /* Fondo semitransparente */
+    border-radius: 50%; /* Circulares */
+    transition: background 0.3s;
+    user-select: none; /* Que no se seleccione el texto al dar clic rapido */
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* En celular, las flechas pueden estorbar un poco, las hacemos más chicas o transparentes */
+@media screen and (max-width: 768px) {
+    .nav-btn {
+        padding: 10px;
+        font-size: 20px;
+        background: transparent; /* Quitamos el fondo para ver mas foto */
+    }
+}
+

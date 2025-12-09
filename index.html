@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis xv años</title>
+    
+    <meta property="og:title" content="Nuestra Boda">
+    <meta property="og:description" content="Te invitamos a celebrar este gran día.">
+    <meta property="og:image" content="./assets/img/portada.jpg"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="music-wrapper" class="music-wrapper hidden">
+        <div id="music-hint" class="music-hint">Presiona Play para escuchar 🎵</div>
+        <div id="control-musica" class="music-btn">
+            <i class="fas fa-play"></i>
+        </div>
+    </div>
+    <audio id="audio-player" loop preload="auto"></audio>
+
+    <header class="hero" id="hero-section">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <p class="pre-titulo" data-aos="fade-down" data-aos-duration="1500">Mis XV años</p>
+            <h1 id="nombres-novios" data-aos="zoom-in" data-aos-duration="2000">Cargando...</h1>
+            <p id="fecha-texto" class="fecha-hero" data-aos="fade-up" data-aos-delay="500">...</p>
+        </div>
+        <div class="flecha-bajar"><i class="fas fa-chevron-down"></i></div>
+    </header>
+
+    <section id="contador-section" class="contador-section" data-aos="fade-up">
+        <p>Solo falta...</p>
+        <div class="timer-container">
+            <div class="time-box" data-aos="flip-left" data-aos-delay="0"><span id="dias">00</span><p>Días</p></div>
+            <div class="time-box" data-aos="flip-left" data-aos-delay="100"><span id="horas">00</span><p>Hs</p></div>
+            <div class="time-box" data-aos="flip-left" data-aos-delay="200"><span id="minutos">00</span><p>Min</p></div>
+            <div class="time-box" data-aos="flip-left" data-aos-delay="300"><span id="segundos">00</span><p>Seg</p></div>
+        </div>
+    </section>
+
+    <section class="mensaje-section" data-aos="fade-up">
+        <div class="container">
+            <i class="fas fa-quote-left icono-pequeno"></i>
+            <p id="frase-novios" class="frase"></p> 
+            <i class="fas fa-quote-right icono-pequeno"></i>
+        </div>
+    </section>
+
+    <section id="padres-section" class="padres-section hidden" data-aos="fade-up">
+        <h3>Con la bendición de mis padres</h3>
+        <div class="padres-grid">
+            <div class="lado">
+                <h4></h4>
+                <p id="padres-novia">...</p>
+            </div>
+            <div class="lado">
+                <h4>Mis padrinos de honor</h4>
+                <p id="padres-novio">...</p>
+                <p>Gretel Echeverria & Alexander Espadas</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hospedaje-section" class="hospedaje-section hidden" data-aos="fade-up">
+        <h2>Sugerencias de Hospedaje</h2>
+        <p class="subtitulo-seccion">Opciones recomendadas para tu comodidad:</p>
+        <div class="hoteles-grid" id="hoteles-container">
+            </div>
+    </section>
+
+    <section id="itinerario-section" class="itinerario-section hidden">
+        <h2>Itinerario</h2>
+        <div class="timeline" id="timeline-container">
+            </div>
+        <p id="frase-itinerario" class="frase-final-itinerario" data-aos="zoom-in">...</p>
+    </section>
+
+    <section class="ubicacion-section">
+        <h2 data-aos="fade-right">Ubicación</h2>
+        <div class="lugar-wrapper">
+            <div class="lugar-card" data-aos="fade-right">
+                <i class="fas fa-church icono-grande"></i>
+                <h3>Ceremonia</h3>
+                <p id="lugar-ceremonia-txt">...</p>
+                <div class="mapa-box" id="mapa-ceremonia-frame"></div>
+                <a href="#" class="btn" id="btn-mapa-ceremonia" target="_blank">Ver en GPS</a>
+            </div>
+            <div class="lugar-card" data-aos="fade-left">
+                <i class="fas fa-glass-cheers icono-grande"></i>
+                <h3>Recepción</h3>
+                <p id="lugar-recepcion-txt">...</p>
+                <div class="mapa-box" id="mapa-recepcion-frame"></div>
+                <a href="#" class="btn" id="btn-mapa-recepcion" target="_blank">Ver en GPS</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria-section" class="galeria-section hidden">
+        <h2>Momentos Inolvidables</h2>
+        
+        <div class="galeria-card" id="galeria-preview" data-aos="fade-up">
+            <div class="card-image">
+                <img id="foto-portada-galeria" src="" alt="Portada">
+            </div>
+            
+            <div class="card-content">
+                <p>Hemos recopilado nuestros mejores recuerdos.</p>
+                <button id="btn-ver-galeria" class="btn">
+                    <i class="fas fa-camera"></i> Ver Galería Completa
+                </button>
+            </div>
+        </div>
+
+        <div class="galeria-grid hidden" id="galeria-container">
+            </div>
+    </section>
+
+    <section id="instagram-section" class="instagram-section hidden" data-aos="zoom-in">
+        <i class="fab fa-instagram icono-grande"></i>
+        <h2>Comparte el Momento</h2>
+        <p>Sube tus fotos y videos usando nuestro Hashtag:</p>
+        <div class="hashtag-box">
+            <span id="hashtag-boda">#Boda...</span>
+        </div>
+        <br>
+        <a href="#" id="btn-instagram" class="btn" target="_blank">Ver en Instagram</a>
+    </section>
+
+    <section id="album-section" class="album-section hidden" data-aos="fade-up">
+        <div class="camara-box">
+            <i class="fas fa-camera-retro icono-camara"></i>
+            <h2>Cámara de Invitados</h2>
+            <p id="frase-album">...</p>
+            <a href="#" id="btn-album" class="btn btn-album" target="_blank">
+                <i class="fas fa-cloud-upload-alt"></i> Subir mis fotos
+            </a>
+            <p class="nota-privacidad">Las fotos se guardarán en nuestro álbum compartido.</p>
+        </div>
+    </section>
+
+    <section class="dresscode-section" data-aos="fade-up">
+        <h2>Código de Vestimenta</h2>
+        <i class="fas fa-user-tie icono-grande"></i>
+        <p>Formal / Etiqueta Rigurosa</p>
+        <p style="font-size: 0.9rem;">(Nos reservamos el color blanco para la Quinceañera)</p>
+    </section>
+
+<section id="spotify-section" class="spotify-section hidden" data-aos="fade-up">
+    <i class="fab fa-spotify" style="font-size: 3rem; color: #1DB954; margin-bottom: 15px;"></i>
+    <h2>Mi playlist</h2>
+    <p style="margin-bottom: 20px;">¡Escucha mi musica favorita!</p>
+
+    <div class="spotify-container" id="spotify-frame-box">
+    </div>
+</section>
+
+<section>
+        <h3>A todas las personas increíbles que forman parte de mi vida, quiero que celebren conmigo mi fiesta de XV años.</h3>
+    </section>
+
+    <section class="rsvp-section" data-aos="flip-up">
+        <div class="rsvp-card">
+            <h2>Confirmar Asistencia</h2>
+            <p class="texto-pases">
+                Hola <b id="nombre-invitado">Invitado</b>, hemos reservado 
+                <b id="pases-asignados" class="num-grande">1</b> lugar(es) en tu honor.
+            </p>
+            <form id="rsvp-form">
+                <label>Personas que asistirán:</label>
+                <select id="select-asistentes"></select>
+                <label>Mensaje:</label>
+                <textarea id="msg-invitado" placeholder="Escribe aquí tus buenos deseos..."></textarea>
+                <button type="submit" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Enviar Confirmación
+                </button>
+            </form>
+        </div>
+    </section>
+
+    
+
+    <footer>
+        <p>Diseñado con ❤️ para tu Evento Especial</p>
+    </footer>
+
+    <div id="lightbox-modal" class="lightbox hidden">
+        <span id="close-lightbox" class="close-btn">&times;</span>
+        
+        <div id="prev-btn" class="nav-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+
+        <img class="lightbox-content" id="lightbox-img" src="">
+
+        <div id="next-btn" class="nav-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="datos.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
