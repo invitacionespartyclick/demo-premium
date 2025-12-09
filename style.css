@@ -328,3 +328,38 @@ button { width: 100%; }
     }
 }
 
+/* =========================================
+   CORRECCIÓN CUENTA REGRESIVA (MÓVIL)
+   ========================================= */
+
+@media screen and (max-width: 480px) {
+    
+    /* 1. El contenedor: Menos espacio entre cajas */
+    .timer-container {
+        gap: 5px; /* Antes era 20px, lo bajamos a 5px */
+        padding: 0 5px; /* Un poco de aire a los lados */
+        width: 100%; /* Asegurar que use todo el ancho */
+        justify-content: space-between; /* Repartir el espacio disponible */
+    }
+
+    /* 2. La cajita individual: Más flaca */
+    .time-box {
+        padding: 5px; /* Quitamos relleno (antes 15px) */
+        min-width: auto; /* Quitamos el ancho mínimo fijo */
+        flex: 1; /* Que todas tengan el mismo ancho automáticamente */
+        border-radius: 5px; /* Bordes menos redondos para ganar espacio */
+    }
+
+    /* 3. El Número (Días, Horas...): Más pequeño */
+    .time-box span {
+        font-size: 1.5rem; /* Bajamos de 2rem a 1.5rem */
+        line-height: 1.1;
+    }
+
+    /* 4. El Texto (Días, Hrs): Más pequeño */
+    .time-box p {
+        font-size: 0.7rem; /* Letra pequeñita */
+        margin-top: 2px;
+    }
+}
+
