@@ -113,9 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const divHoteles = document.getElementById('hoteles-container');
         if (divHoteles && evento.hoteles) {
             divHoteles.innerHTML = '';
-            evento.hoteles.forEach(hotel => {
+            evento.hoteles.forEach((hotel, index) => { // <--- Agregamos 'index' aquí
+                
+                // Calculamos un retraso para que aparezcan uno por uno (efecto escalera)
+                const delay = index * 100; 
+
                 const html = `
-                    <div class="hotel-card">
+                    <div class="hotel-card" data-aos="fade-up" data-aos-delay="${delay}">
                         <img src="${hotel.foto}" alt="${hotel.nombre}">
                         <div class="hotel-info">
                             <h3>${hotel.nombre}</h3>
@@ -127,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
+    
     // --- GALERÍA (Modo Tarjeta) ---
     if (evento.controles.mostrarGaleria && esPremium && evento.galeria.length > 0) {
         
