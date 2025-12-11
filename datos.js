@@ -27,7 +27,7 @@ const evento = {
     novios: {
         nombres: "Angie Mariam Espadas Mijangos",
         fecha: "2026-01-15T19:09:00",
-        frase: "El amor es la única cosa que crece cuando se reparte. por que el amor es una bendición.",
+        frase: "Hoy dejo atrás la ilusión de la infancia para abrazar los sueños de mi juventud. Agradezco a Dios y a mis padres por guiarme hasta aquí",
     },
 
     padres: {

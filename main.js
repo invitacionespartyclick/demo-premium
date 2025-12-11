@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     elFrase.textContent = ""; 
     elFrase.classList.add('cursor-maquina');
 
+    
+
     let idxLetra = 0;
     function escribir() {
         if (idxLetra < txtFrase.length) {
@@ -65,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.5 });
     observador.observe(elFrase);
+
+    //Segunda fraseeeee
+
+    
 
     // ======================================================
     // 5. CONTROL DE SECCIONES (Visibilidad)
