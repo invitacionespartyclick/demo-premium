@@ -51,11 +51,34 @@ section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; text-align: cen
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
 /* --- CONTADOR --- */
-.contador-section { background: var(--color-principal); color: white; }
+.contador-section { background: var(--color-principal); color: white; padding-bottom: 40px; }
 .contador-section h2 { color: white; }
 .timer-container { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
 .time-box { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; min-width: 80px; }
 .time-box span { font-size: 2rem; font-weight: 700; display: block; }
+
+.calendar-btn-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-calendar {
+    background-color: #ffffff;
+    color: var(--color-principal);
+    border: 2px solid var(--color-principal);
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-calendar:hover {
+    /* Al pasar el mouse, el botón se invierte a color principal */
+    background-color: var(--color-principal);
+    border-color: var(--color-principal);
+    color: white; 
+}
 
 /* --- EFECTO MÁQUINA DE ESCRIBIR (CURSOR) --- */
 .cursor-maquina::after {

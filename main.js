@@ -352,7 +352,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-}); // <--- AQUÍ TERMINA EL DOMContentLoaded
+    // ======================================================
+    // 10. VINCULAR BOTÓN CALENDARIO
+    // ======================================================
+    const btnCalendar = document.getElementById('add-to-calendar-btn');
+    if (btnCalendar) {
+        btnCalendar.addEventListener('click', generateICS);
+    }
+
+}); // <--- Aquí es donde cierra el DOMContentLoaded
+
 
 // ======================================================
 // 12. FUNCIÓN EXTERNA: MARIPOSAS
@@ -369,4 +378,63 @@ function crearMariposas() {
         m.style.animationDelay = Math.random() * 10 + 's';
         cont.appendChild(m);
     }
+}
+
+// ======================================================
+// FUNCIÓN EXTERNA: GENERAR ARCHIVO ICS (CALENDARIO)
+// ======================================================
+function generateICS() {
+    // 1. OBTENER DATOS
+    const eventName = `Celebración de ${evento.novios.nombres}`;
+    const eventLocation = evento.ubicacion.recepcion.lugar;
+    
+    // Obtener la fecha del evento (Ej: 2025-12-25)
+    const eventDate = new Date(evento.novios.fecha);
+    
+    // Asumimos una hora de inicio estándar para la fiesta si no está especificada (Ej: 8:00 PM o 20:00)
+    // El formato VCALENDAR requiere año/mes/día Y HORA, así que agregamos la hora de la recepción.
+    eventDate.setHours(20); 
+    eventDate.setMinutes(0);
+    eventDate.setDate(eventDate.getDate() + 1); // ICS files use date one day later for all day events.
+    
+    // 2. FORMATEAR LA FECHA A VCALENDAR (YYYYMMDDTHHMMSS)
+    const pad = (num) => String(num).padStart(2, '0');
+    
+    // Ejemplo: 20251225T200000 (UTC es +0, ajustamos a la zona horaria)
+    const formattedDate = 
+        eventDate.getFullYear() +
+        pad(eventDate.getMonth() + 1) + // JS month is 0-11
+        pad(eventDate.getDate()) +
+        'T' +
+        pad(eventDate.getHours()) +
+        pad(eventDate.getMinutes()) +
+        '00';
+    
+    // 3. CREAR CONTENIDO ICS
+    const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//PartyClick//Invitation//ES',
+        'BEGIN:VEVENT',
+        `UID:${formattedDate}-${Math.random().toString(36).substring(2)}@partyclick.com`,
+        `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'}`,
+        `DTSTART:${formattedDate}`,
+        `SUMMARY:${eventName}`,
+        `LOCATION:${eventLocation}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\n');
+
+    // 4. DESCARGAR ARCHIVO
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'invitacion-partyclick.ics');
+    
+    // Simular clic para descargar
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
 }
